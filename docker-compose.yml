@@ -1,0 +1,20 @@
+version: '3'
+services:
+  app1:
+    build: ./app1
+    ports: 
+    - 5001:5000
+  app2:
+    build: ./app2
+    ports: 
+    - 5002:5000
+  nginx:
+    build: ./nginx
+    ports: 
+    - 8080:80
+    depends_on:
+      - app1
+      - app2
+
+#https://towardsdatascience.com/sample-load-balancing-solution-with-docker-and-nginx-cf1ffc60e644
+#https://searchitoperations.techtarget.com/tutorial/Control-Docker-containers-with-the-Nginx-load-balancer
